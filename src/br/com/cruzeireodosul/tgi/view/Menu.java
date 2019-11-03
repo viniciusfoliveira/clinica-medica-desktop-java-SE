@@ -1,16 +1,27 @@
 package br.com.cruzeireodosul.tgi.view;
 
+import br.com.cruzeirodosul.tgi.dao.AgendaDAO;
+import br.com.cruzeirodosul.tgi.view.javafx.OpenReport;
 import static java.awt.SystemColor.desktop;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.stage.Stage;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.JasperPrint;
+import org.jvfx.viewer.JasperViewerFX;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author logon
@@ -20,11 +31,10 @@ public class Menu extends javax.swing.JFrame {
     /**
      * Creates new form principal
      */
-    
     public Menu() {
-        
+
         initComponents();
-        
+
     }
 
     /**
@@ -49,6 +59,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem14 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -80,6 +91,8 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cruzeirodosul/tgi/view/img/fundo-azul.jpg"))); // NOI18N
 
+        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
@@ -90,7 +103,6 @@ public class Menu extends javax.swing.JFrame {
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jDesktopPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cruzeirodosul/tgi/view/img/usuariosp_compras.png"))); // NOI18N
         jMenu1.setText("Usuarios");
@@ -135,6 +147,15 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jMenu2.add(jMenuItem8);
+
+        jMenuItem14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cruzeirodosul/tgi/view/img/jaspersoftstudio.png"))); // NOI18N
+        jMenuItem14.setText("Relatorio");
+        jMenuItem14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem14ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem14);
 
         jMenuBar1.add(jMenu2);
 
@@ -212,19 +233,19 @@ public class Menu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(615, 551));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-     
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-     this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        Sobre sobre = new Sobre ();       
+        Sobre sobre = new Sobre();
         sobre.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -236,8 +257,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
-       ListarUsuario usuario = new ListarUsuario();
-       usuario.setVisible(true);
+        ListarUsuario usuario = new ListarUsuario();
+        usuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -264,7 +285,37 @@ public class Menu extends javax.swing.JFrame {
         ficha.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
-    
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+        // TODO add your handling code here:
+        //OpenReport.main(null);
+
+        JRResultSetDataSource jrResultSetDataSource;
+        JasperReport jasperReport;
+        JasperPrint jasperPrint;
+        File relatorioAgenda;
+        
+        try {
+            //Caminho para Arquivo de Relatorio - Caminho Direto sem Caminho Relativo
+            // VC pode Criar um metodo para Isto ficaria top.
+            relatorioAgenda = new File("C:\\GitHub\\clinica-medica-desktop-javaSE\\Relatorios\\RelatorioAgenda.jasper");
+
+            //Recebe o ResultSet do Agenda Dao listarDadosAgenda 
+            jrResultSetDataSource = new JRResultSetDataSource(new AgendaDAO().listarDadosAgenda(null));
+            //Carrega o Arquivo de Relatorio para o Jasper Report
+            jasperReport = (JasperReport) JRLoader.loadObject(relatorioAgenda);
+            //Adiciona os Dados no Relatorio
+            jasperPrint = JasperFillManager.fillReport(jasperReport, null, jrResultSetDataSource);
+            //Mostra os Dados de Relatorio na tela
+            //OpenReport.main(null);
+            
+            OpenReport.openRelortFX(jasperPrint, "Relatório de Agenda");
+            //new JasperViewerFX(new Stage()).viewReport("Relatorios de Agenda", jasperPrint);
+        } catch (Exception ex) {
+            //Erros
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,7 +343,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+
             }
         });
     }
@@ -312,6 +363,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
