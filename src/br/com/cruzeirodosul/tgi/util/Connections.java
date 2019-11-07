@@ -11,8 +11,7 @@ public class Connections {
        public static java.sql.Connection getConexao() throws Exception {
         java.sql.Connection con = null;
         Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost/tgi","root","root");
-         
+        con = DriverManager.getConnection("jdbc:mysql://localhost/tgi","admin","123456");
         return con;
     }
 

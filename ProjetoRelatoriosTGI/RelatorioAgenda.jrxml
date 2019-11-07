@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioAgenda" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d0379536-45da-41c4-8b38-ab3f99d25b63">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mysql_tgi"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT ID AS CODIGO, EXAME, CONVENIO, MEDICO, DATA, STATUS FROM Agenda]]>
+	</queryString>
+	<field name="CODIGO" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="CODIGO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agenda"/>
+	</field>
+	<field name="EXAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="EXAME"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agenda"/>
+	</field>
+	<field name="CONVENIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CONVENIO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agenda"/>
+	</field>
+	<field name="MEDICO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="MEDICO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agenda"/>
+	</field>
+	<field name="DATA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="DATA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agenda"/>
+	</field>
+	<field name="STATUS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="STATUS"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agenda"/>
+	</field>
+	<group name="CODIGO">
+		<groupExpression><![CDATA[$F{CODIGO}]]></groupExpression>
+	</group>
+	<group name="EXAME">
+		<groupExpression><![CDATA[$F{EXAME}]]></groupExpression>
+	</group>
+	<group name="CONVENIO">
+		<groupExpression><![CDATA[$F{CONVENIO}]]></groupExpression>
+	</group>
+	<group name="MEDICO">
+		<groupExpression><![CDATA[$F{MEDICO}]]></groupExpression>
+	</group>
+	<group name="DATA">
+		<groupExpression><![CDATA[$F{DATA}]]></groupExpression>
+	</group>
+	<group name="STATUS">
+		<groupExpression><![CDATA[$F{STATUS}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<staticText>
+				<reportElement x="140" y="20" width="274" height="40" uuid="95d17b97-ff59-4633-b13d-dd00deadce87"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[Relatório de Agenda]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="18" uuid="8114185b-8e91-4ccb-a7e1-f1ae99ea1bd8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da4bcda0-7e39-49c5-ac8f-81d7d0f251c5"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="14" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CODIGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="100" height="18" uuid="d6917e2b-b70a-4851-b310-29ed60646cbf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea63ca19-f830-4293-b461-f5c56b24eff2"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="14" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[EXAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="18" uuid="6f2f1aea-c828-48dd-8b9d-7b87b86e8623">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="957aa573-62c9-49ef-bb1e-3a89585f7a26"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CONVENIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="100" height="18" uuid="d89cf68f-fcfd-4acc-833d-a1c0a28d2e33">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="73ab0228-da73-4ff2-a6ce-195cecaa9e52"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[MEDICO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="80" height="18" uuid="c94ce153-2c83-4555-8251-2e269c87aa84">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee192094-2c08-4f0a-a54a-16deb141fb7f"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[DATA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="75" height="18" uuid="424df017-5ed1-4944-94a4-e9d498339581">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9988d81f-8786-4448-bd31-23527d435ff8"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[HORARIO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="11" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="0" y="-2" width="100" height="13" uuid="56700654-c970-446d-9197-6f21f3fcd628">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="da4bcda0-7e39-49c5-ac8f-81d7d0f251c5"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<paragraph lineSpacingSize="1.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CODIGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="-2" width="100" height="13" uuid="8e539cb6-9e10-47ac-8c36-b0fc82c9cb85">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ea63ca19-f830-4293-b461-f5c56b24eff2"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{EXAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="-2" width="100" height="13" uuid="b39a67c4-dd8b-4365-b1c5-8f486259ef09">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="957aa573-62c9-49ef-bb1e-3a89585f7a26"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{CONVENIO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="-2" width="100" height="13" uuid="d32fef90-97b9-457e-9d6b-4fc5df769a56">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="73ab0228-da73-4ff2-a6ce-195cecaa9e52"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{MEDICO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="-2" width="80" height="13" uuid="c4ea16e1-66de-4a8a-ae1b-ef3590bb9a01">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee192094-2c08-4f0a-a54a-16deb141fb7f"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{DATA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="-2" width="75" height="13" uuid="d9d291b6-781c-4cbe-aecb-d4c31853e769">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9988d81f-8786-4448-bd31-23527d435ff8"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="14" splitType="Stretch">
+			<textField>
+				<reportElement x="346" y="0" width="209" height="13" uuid="d5872dc0-1a30-4d8f-8cbe-558b4b3a436c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Pagina " + $V{PAGE_NUMBER} + " de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</summary>
+</jasperReport>

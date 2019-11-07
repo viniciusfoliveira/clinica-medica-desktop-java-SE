@@ -181,7 +181,7 @@ public class Login extends javax.swing.JFrame {
          cliente.setSenhaCliente(new String(txtSenha.getPassword()));
             try {
                 if(clienteDAO.autentificar(cliente.getLoginCliente(), cliente.getSenhaCliente())){
-                   JOptionPane.showMessageDialog(null, "Autentificado com sucesso");         
+                 //  JOptionPane.showMessageDialog(null, "Autentificado com sucesso");         
                    Menu menu = new Menu();
                    menu.setVisible(true);
                    limpar ();
